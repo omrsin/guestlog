@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Guestlog</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Guestlog</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= render 'layouts/shim' %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>		
+		<% flash.each do |key, value| %>
+			<div class="container alert alert-<%= key %> flash-margin"><%= value %></div>
+		<% end %>
+		
+		<div class = "container">
+			<%= yield %>
+			<div class="clearfix">
+				<%= debug(params) if Rails.env.development? %>
+			</div>
+		</div>
+	
+		
 
-<%= yield %>
-
-</body>
+	</body>
 </html>

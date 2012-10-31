@@ -1,0 +1,13 @@
+<div class="well content">
+  	<legend>Bienvenido</legend>
+  	<%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Iniciar Sesión", class: "btn btn-warning" %>
+    <% end %>
+</div>
