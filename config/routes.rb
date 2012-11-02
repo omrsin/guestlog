@@ -1,10 +1,12 @@
 Guestlog::Application.routes.draw do
 
 	resources :sessions, only: [:new, :create, :destroy]
+	resources :visits, only: [:create, :index, :new]
 	
 	match '/signout', to: 'sessions#destroy', via: :delete
+	match '/signin', to: "sessions#new"
 	
-	root to: "sessions#new"
+	root to: "visits#new"
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.

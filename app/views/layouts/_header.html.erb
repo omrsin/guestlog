@@ -11,19 +11,15 @@
 				</a>					    	
 				<nav Class="nav-collapse">		
 					<ul class="nav pull-right">					
-						<li class="active">
-							<a>Opción1</a>
-							<aside></aside>
-						</li>
-						<li>
-							<a>Opción2</a>
-							<aside></aside>
-						</li>
-						<li>
-							<a>Opción3</a>
-							<aside></aside>
-						</li>
 						<% if signed_in?%>
+							<li>
+								<%= link_to "Registrar Visita", new_visit_path %>
+								<aside></aside>
+							</li>
+							<li>
+								<%= link_to "Consultar Visitas", visits_path %>
+								<aside></aside>
+							</li>						
 							<li>
 								<%= link_to "Cerrar Sesión", signout_path, method: "delete" %>
 								<aside></aside>

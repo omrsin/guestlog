@@ -1,0 +1,9 @@
+<div>
+	<section class="vertical-margin">
+		<% if @visits.any? %>
+			<ol class="visits">
+				<%= render partial: 'visit', collection: @visits %>
+			</ol>
+		<% end %>
+	</section>
+</div>

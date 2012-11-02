@@ -1,0 +1,17 @@
+<% if visit.errors.any? %>
+	<% visit.errors.delete(:guest_id) %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Ha ocurrido un error durante el registro
+    </div>
+    <ul>
+    <% visit.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    
+    <% visit.guest.errors.full_messages.each do |msg| %>
+    	<li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

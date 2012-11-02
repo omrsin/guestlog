@@ -1,0 +1,59 @@
+<div>	
+	<section class="row vertical-margin">
+		<div id="webcam" class="span5">
+			<div id="capture_images">
+				<input id="capture_image" type="hidden" value="" name="capture[image]"/>
+			</div>		
+		</div>
+	
+		<div class="span2 centered">
+			<a href="#" class="btn btn-inverse btn-large" id="capture">
+				<i class="icon-white icon-camera"></i>
+			</a>
+		</div>
+	
+		<div class="span5">
+			<div class="pull-right">
+				<canvas class="bordered" id="canvas" height="240" width="320"></canvas>
+			</div>
+		</div>
+	</section>	
+	
+	<%= form_for @visit, url: visits_path, html: {multipart: true} do |visit_f| %>				
+		<section class="clearfix vertical-margin">
+			<% @visit.errors.delete(:user_id) %>			
+
+			<%= render 'visit_error_messages', visit: visit_f.object %>
+			
+			<div class="row">
+				<%= fields_for :guest, @visit.guest do |guest_f| %>
+					<div class="span6">
+						<div class="pull-right">
+							<%= guest_f.label "Nombre" %>
+							<%= guest_f.text_field :first_name %>
+						</div>
+						<div class="clearfix"></div>
+						<div class="pull-right">
+							<%= guest_f.label "Apellido" %>
+							<%= guest_f.text_field :last_name %>
+						</div>
+					</div>
+					
+					<div class="span6">
+						<%= guest_f.label "Cédula" %>
+						<%= guest_f.text_field :id_document %>
+					
+						<%= visit_f.hidden_field :image_code %> 
+		
+						<%= visit_f.label "Persona de Contacto" %>
+						<%= visit_f.text_field :contact %>
+					</div>
+				<% end %>
+			</div>
+		</section>
+				
+		<div class="span12 centered">
+			<%= visit_f.submit "Registrar", class: "btn btn-large btn-warning" %>
+		</div>
+	<% end %>
+</div>

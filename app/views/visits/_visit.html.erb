@@ -1,0 +1,10 @@
+<li id="<%= visit.id %>">
+  <%= link_to image_tag(visit.image_url), root_path %>
+  <span class="guest">
+    <%= link_to "#{visit.guest.first_name} #{visit.guest.last_name}", root_path %>
+  </span>
+  <span class="contact"><%= visit.contact %></span>
+  <span class="timestamp">
+    <%= visit.created_at %>.
+  </span>
+</li>

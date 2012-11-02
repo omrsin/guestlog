@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
 		user = User.find_by_username(params[:session][:username].downcase)
 		if user && user.authenticate(params[:session][:password])
     	sign_in user
+	   	redirect_back_or root_url
     else
     	if user && user.active
       	flash.now[:error] = 'Combinación Inválida!'
@@ -26,7 +27,7 @@ class SessionsController < ApplicationController
 	
 	def destroy
 		sign_out
-    redirect_to root_url
+    redirect_to signin_url
 	end
 
 end

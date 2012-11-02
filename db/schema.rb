@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025002642) do
+ActiveRecord::Schema.define(:version => 20121031195635) do
+
+  create_table "guests", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "id_document"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -28,5 +36,17 @@ ActiveRecord::Schema.define(:version => 20121025002642) do
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  create_table "visits", :force => true do |t|
+    t.string   "contact"
+    t.string   "image"
+    t.integer  "user_id"
+    t.integer  "guest_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "visits", ["guest_id"], :name => "index_visits_on_guest_id"
+  add_index "visits", ["user_id", "created_at"], :name => "index_visits_on_user_id_and_created_at"
 
 end
