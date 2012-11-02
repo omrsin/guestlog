@@ -1,0 +1,32 @@
+<div class="well well-large visit-record">
+  	<%= image_tag(@visit.image_url, class: "thumbnail") %>
+  	<legend>
+  		<%= "#{@visit.guest.first_name} #{@visit.guest.last_name}" %>
+  		<div>
+  			<small><%= @visit.created_at.strftime("%d/%m/%Y %I:%M %p")%></small>
+  		</div>
+  	</legend>
+  	
+  	<table class="table">
+  		<tbody>
+				<tr>
+					<td><strong>Cédula:</strong></td>
+					<td class="right"><%= @visit.guest.id_document %></td>
+				</tr>
+				<tr>
+					<td><strong>Contacto:</strong></td>
+					<td class="right">
+						<% if !@visit.contact.nil? %> 
+							<%= @visit.contact %>
+						<% else %>
+							Sin Contacto.
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Registrado por:</strong></td>
+					<td class="right"><%= "#{@visit.user.first_name} #{@visit.user.last_name}" %></td>
+				</tr>
+			</tbody>			
+  	</table>
+</div>

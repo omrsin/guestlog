@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker-es
 //= require jquery.webcam
 //= require_tree .
 
@@ -22,6 +23,25 @@ var image = null;
 
 var filter_on = false;
 var filter_id = 0;
+
+$(function(){
+	$( "#visit_from" ).datepicker({
+		  defaultDate: "+1w",
+		  changeMonth: true,
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+		      $( "#visit_to" ).datepicker( "option", "minDate", selectedDate );
+		  }
+	});
+	$( "#visit_to" ).datepicker({
+		  defaultDate: "+1w",
+		  changeMonth: true,
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+		      $( "#visit_from" ).datepicker( "option", "maxDate", selectedDate );
+		  }
+	});
+});
 
 function changeFilter() {
     if (filter_on) {
@@ -181,3 +201,4 @@ window.addEventListener("load", function() {
     }
 
 }, false);
+

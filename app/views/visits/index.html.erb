@@ -1,9 +1,30 @@
 <div>
+	<section class="centered">
+		<%= form_tag("/visits", method: "get") do %>
+			<%= text_field_tag(:visit_from, nil, :placeholder => "Desde") %>
+			<%= text_field_tag(:visit_to, nil, :placeholder => "Hasta") %>
+			<%= submit_tag("Buscar") %>
+		<% end %>
+	</section>
 	<section class="vertical-margin">
 		<% if @visits.any? %>
-			<ol class="visits">
-				<%= render partial: 'visit', collection: @visits %>
-			</ol>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Imagen</th>
+						<th>Nombre</th>
+						<th>Cédula</th>
+						<th>Contacto</th>
+						<th>Fecha</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%= render partial: 'visit', collection: @visits %>
+				</tbody>
+			</table>
+			<%= will_paginate @visits %>
+		<% else %>
+			<div class="well well-large centered">No existe ninguna visita registrada</div>
 		<% end %>
 	</section>
 </div>

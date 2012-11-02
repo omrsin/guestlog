@@ -1,10 +1,7 @@
-<li id="<%= visit.id %>">
-  <%= link_to image_tag(visit.image_url), root_path %>
-  <span class="guest">
-    <%= link_to "#{visit.guest.first_name} #{visit.guest.last_name}", root_path %>
-  </span>
-  <span class="contact"><%= visit.contact %></span>
-  <span class="timestamp">
-    <%= visit.created_at %>.
-  </span>
-</li>
+<tr id="<%= visit.id %>">
+  <td><%= link_to image_tag(visit.image_url, class: "thumb"), visit %></td>
+  <td><%= link_to "#{visit.guest.first_name} #{visit.guest.last_name}", visit %></td>
+ 	<td><%= visit.guest.id_document %></td>
+ 	<td><%= visit.contact %></td>
+  <td><%= visit.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>
+</tr>

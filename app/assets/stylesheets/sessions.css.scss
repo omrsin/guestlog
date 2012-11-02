@@ -17,6 +17,14 @@
 	text-align: center;
 }
 
+.right {
+	text-align: right;
+}
+
+.table td.right {
+	text-align: right;
+}
+
 .vertical-margin {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -24,6 +32,15 @@
 
 .bordered {
 	border: 1px solid $grayLight;
+}
+
+.thumb {
+	width: 100px;
+}
+
+.visit-record {
+	width: 330px;
+	margin: 20px auto;
 }
 
 
