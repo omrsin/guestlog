@@ -18,7 +18,6 @@ gem 'pg', '0.12.2'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-	gem 'jquery-ui-rails', '1.0.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
@@ -26,6 +25,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '1.0.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
