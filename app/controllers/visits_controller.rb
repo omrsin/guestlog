@@ -47,11 +47,11 @@ class VisitsController < ApplicationController
 	
 	def create_image
 		unless @visit.image_code == ''
-			File.open("#{Rails.root}/public/snapshot_temp.png", 'wb') do |f|
+			File.open("#{Rails.root}/public/visit_#{@visit.id}.png", 'wb') do |f|
 		    f.write(Base64.decode64(@visit.image_code))
 		  end
 		  @visit.image_code = ''
-		  @visit.image = File.open("#{Rails.root}/public/snapshot_temp.png")
+		  @visit.image = File.open("#{Rails.root}/public/visit_#{@visit.id}.png")
 		end
   end
   
