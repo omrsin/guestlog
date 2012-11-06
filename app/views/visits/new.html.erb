@@ -29,23 +29,23 @@
 				<%= fields_for :guest, @visit.guest do |guest_f| %>
 					<div class="span6">
 						<div class="pull-right">
-							<%= guest_f.label "Nombre" %>
+							<%= guest_f.label :first_name %>
 							<%= guest_f.text_field :first_name %>
 						</div>
 						<div class="clearfix"></div>
 						<div class="pull-right">
-							<%= guest_f.label "Apellido" %>
+							<%= guest_f.label :last_name %>
 							<%= guest_f.text_field :last_name %>
 						</div>
 					</div>
 					
 					<div class="span6">
-						<%= guest_f.label "Cédula" %>
+						<%= guest_f.label :id_document %>
 						<%= guest_f.text_field :id_document %>
 					
 						<%= visit_f.hidden_field :image_code %> 
 		
-						<%= visit_f.label "Persona de Contacto" %>
+						<%= visit_f.label :contact %>
 						<%= visit_f.text_field :contact %>
 					</div>
 				<% end %>
