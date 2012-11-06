@@ -31,12 +31,12 @@ class VisitsController < ApplicationController
 	
 	def index
 		@visit_from = params[:visit_from] || DateTime.current.beginning_of_day
-		@visit_to 	 = params[:visit_to] || DateTime.tomorrow
+		@visit_to 	 = params[:visit_to] || DateTime.current.end_of_day
 		validate_dates
 		@visits = current_user.visits.
-							where(created_at: @visit_from.to_datetime.beginning_of_day..@visit_to.to_datetime.end_of_day).
+							where(created_at: @visit_from..@visit_to).
 							order("created_at DESC").
-							page(params[:page]).per_page(5)
+							page(params[:page]).per_page(10)
 	end
 	
 	def show
@@ -58,11 +58,15 @@ class VisitsController < ApplicationController
   def validate_dates
   	if @visit_from == '' && @visit_to == ''
   		@visit_from = DateTime.current.beginning_of_day
-  		@visit_to = DateTime.tomorrow
+  		@visit_to = DateTime.current.end_of_day
   	elsif (@visit_from=='' && @visit_to!='') || (@visit_from!='' && @visit_to=='')
   		flash.now[:error] = 'Combinación de fechas inválida'
   		@visit_from = DateTime.current.beginning_of_day
-  		@visit_to = Date.tomorrow
+  		@visit_to = DateTime.current.end_of_day
+  	else
+  		@visit_from = @visit_from.to_date.to_time_in_current_zone.beginning_of_day
+  		@visit_to = @visit_to.to_date.to_time_in_current_zone.end_of_day
 		end
   end
+  
 end
