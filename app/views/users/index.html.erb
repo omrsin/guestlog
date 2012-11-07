@@ -1,0 +1,28 @@
+<div>
+	<section class="vertical-margin">
+		<% if @users.any? %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Usuario</th>
+						<th>Nombre</th>
+						<th>Teléfono</th>
+						<th>E-mail</th>
+						<th>Estatus</th>
+						<th>Tipo</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<%= render partial: 'user', collection: @users %>
+				</tbody>
+			</table>
+			<%= will_paginate @users %>
+		<% else %>
+			<div class="well well-large centered">No existe ningún usuario registrado</div>
+		<% end %>
+	</section>
+	<section class="centered vertical-margin">
+		<%= link_to "Nuevo Usuario", new_user_path, class: "btn btn-warning btn-large" %>
+	</section>
+</div>

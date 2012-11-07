@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
     	sign_in user
 	   	redirect_back_or root_url
     else
-    	if user && user.active
+    	if user && user.is_active?
       	flash.now[:error] = 'Combinación Inválida!'
       else 
-      	if user && !user.active
+      	if user && !user.is_active?
       		flash.now[:error] = 'Usuario desactivado'
       	else
       		flash.now[:error] = 'Combinación Inválida!'

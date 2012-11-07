@@ -14,15 +14,17 @@
 						<% if signed_in?%>
 							<li>
 								<%= link_to "Registrar Visita", new_visit_path %>
-								<aside></aside>
 							</li>
 							<li>
-								<%= link_to "Consultar Visitas", visits_path %>
-								<aside></aside>
-							</li>						
+								<%= link_to "Consultar Visitas", visits_path %>								
+							</li>
+							<% if current_user.is_admin? %>
+								<li>
+								<%= link_to "Consultar Usuarios", users_path %>								
+							</li>
+							<% end %>						
 							<li>
-								<%= link_to "Cerrar Sesión", signout_path, method: "delete" %>
-								<aside></aside>
+								<%= link_to "Cerrar Sesión", signout_path, method: "delete" %>								
 							<li>
 						<% end %>										
 					</ul>

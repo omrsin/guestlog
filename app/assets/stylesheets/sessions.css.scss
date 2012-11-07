@@ -30,6 +30,10 @@
 	margin-bottom: 30px;
 }
 
+.top-margin {
+	margin-top: 15px;
+}
+
 .bordered {
 	border: 1px solid $grayLight;
 }
@@ -41,6 +45,11 @@
 .visit-record {
 	width: 330px;
 	margin: 20px auto;
+}
+
+.floating-left-label {
+	float: left;
+	margin-right: 15px;
 }
 
 

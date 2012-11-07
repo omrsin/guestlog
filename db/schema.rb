@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031195635) do
+ActiveRecord::Schema.define(:version => 20121106211836) do
 
   create_table "guests", :force => true do |t|
     t.string   "first_name"
@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(:version => 20121031195635) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
-    t.boolean  "active"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.boolean  "is_active"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "remember_token"
+    t.boolean  "is_admin",       :default => false
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

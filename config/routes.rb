@@ -2,6 +2,7 @@ Guestlog::Application.routes.draw do
 
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :visits, only: [:create, :index, :new, :show]
+	resources :users, only: [:create, :index, :new, :edit, :update, :show, :destroy]
 	
 	match '/signout', to: 'sessions#destroy', via: :delete
 	match '/signin', to: "sessions#new"

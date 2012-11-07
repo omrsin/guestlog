@@ -1,4 +1,4 @@
-<tr id="<%= visit.id %>">
+<tr id="visit_<%= visit.id %>">
   <td><%= link_to image_tag(visit.image_url, class: "thumb"), visit %></td>
   <td><%= link_to "#{visit.guest.first_name} #{visit.guest.last_name}", visit %></td>
  	<td><%= visit.guest.id_document %></td>

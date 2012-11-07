@@ -33,10 +33,17 @@ class VisitsController < ApplicationController
 		@visit_from = params[:visit_from] || DateTime.current.beginning_of_day
 		@visit_to 	 = params[:visit_to] || DateTime.current.end_of_day
 		validate_dates
-		@visits = current_user.visits.
-							where(created_at: @visit_from..@visit_to).
-							order("created_at DESC").
-							page(params[:page]).per_page(10)
+		if current_user.is_admin?
+			@visits = Visit.
+								where(created_at: @visit_from..@visit_to).
+								order("created_at DESC").
+								page(params[:page]).per_page(10)
+		else
+			@visits = current_user.visits.
+								where(created_at: @visit_from..@visit_to).
+								order("created_at DESC").
+								page(params[:page]).per_page(10)
+		end
 	end
 	
 	def show

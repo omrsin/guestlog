@@ -39,4 +39,10 @@ module SessionsHelper
       redirect_to signin_url, notice: "Por favor inicie sesión."
     end
   end
+  
+  def is_admin_user
+  	unless current_user.is_admin?
+  		redirect_to root_url, notice: "Debe ser administrado para acceder a esa dirección"
+  	end
+  end  
 end

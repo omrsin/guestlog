@@ -1,0 +1,48 @@
+<div>
+	<%= form_for @user do |user_f| %>
+		<section class="clearfix vertical-margin">
+			<%= render 'shared/error_messages', object: user_f.object %>
+
+			<div class="row">
+				<div class="span6">
+					<div class="pull-right">
+						<%= user_f.label :username %>
+						<%= user_f.text_field :username %>
+					</div>
+					<div class="clearfix"></div>
+					<div class="pull-right">
+						<%= user_f.label :password %>
+						<%= user_f.password_field :password %>
+					</div>
+					<div class="clearfix"></div>
+					<div class="pull-right">
+						<%= user_f.label :email %>
+						<%= user_f.text_field :email %>
+					</div>
+				</div>
+				<div class="span6">
+					<%= user_f.label :first_name %>
+					<%= user_f.text_field :first_name %>
+		
+					<%= user_f.label :last_name %>
+					<%= user_f.text_field :last_name %>
+
+					<%= user_f.label :phone %>
+					<%= user_f.text_field :phone %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span6">
+					<div class="clearfix"></div>
+					<div class="pull-right top-margin">
+						<%= user_f.label :is_admin, class: "floating-left-label" %>
+						<%= user_f.check_box :is_admin %>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="span12 centered">
+			<%= user_f.submit "Registrar", class: "btn btn-large btn-warning" %>
+		</div>
+	<% end %>
+</div>

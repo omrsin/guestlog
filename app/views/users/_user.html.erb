@@ -1,0 +1,17 @@
+<tr id="user_<%= user.id %>">
+  <td><%= link_to user.username, edit_user_path(user) %></td>
+  <td><%= "#{user.first_name} #{user.last_name}" %></td>
+ 	<td><%= user.phone %></td>
+ 	<td><%= user.email %></td>
+  <td><%= user.is_active ? "Activo" : "Desactivado" %></td>
+  <td><%= user.is_admin ? "Administrador" : "Regular" %></td>
+  <td>
+  	<% if user != current_user %>
+			<% if user.is_active %>
+				<%= link_to "Desactivar", user, class: "btn btn-danger", confirm: "¿Está seguro que desea desactivar este usuario?", method: :delete %>
+			<% else %>
+				<%= link_to "Activar", user, class: "btn btn-info", confirm: "¿Está seguro que desea activar este usuario?" %>
+			<% end %>
+		<% end %>
+  </td>
+</tr>
