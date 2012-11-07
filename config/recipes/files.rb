@@ -5,7 +5,6 @@ namespace :files do
 		run "mv /home/#{user}/apps/#{application}/current/public/uploads /home/#{user}/tmp"
 	end
 	before "deploy", "files:backup"
-	before "deploy:cold", "files:backup"
 	
 	desc "restores image files" 
 	task :restore, roles: :web do
@@ -13,6 +12,5 @@ namespace :files do
 		run "rm -rf /home/#{user}/tmp"
 	end
 	after "deploy", "files:restore"
-	after "deploy:cold", "files:restore"
 
 end

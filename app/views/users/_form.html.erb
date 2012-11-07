@@ -7,7 +7,11 @@
 				<div class="span6">
 					<div class="pull-right">
 						<%= user_f.label :username %>
-						<%= user_f.text_field :username %>
+						<% if @user.new_record? %>
+							<%= user_f.text_field :username %>
+						<% else %>
+							<%= user_f.text_field :username, readonly: true %>
+						<% end %>
 					</div>
 					<div class="clearfix"></div>
 					<div class="pull-right">
@@ -42,7 +46,11 @@
 			</div>
 		</section>
 		<div class="span12 centered">
-			<%= user_f.submit "Registrar", class: "btn btn-large btn-warning" %>
+			<% if @user.new_record? %>
+				<%= user_f.submit "Registrar", class: "btn btn-large btn-warning" %>
+			<% else %>
+				<%= user_f.submit "Actualizar", class: "btn btn-large btn-warning" %>
+			<% end %>
 		</div>
 	<% end %>
 </div>

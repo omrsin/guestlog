@@ -17,5 +17,5 @@ class Visit < ActiveRecord::Base
   validates :user_id, presence: true
   validates :guest_id, presence: true
   validates :image, presence: true
-  validates :contact, format: { with: VALID_CONTACT_REGEX }
+  validates :contact, format: { with: VALID_CONTACT_REGEX }, length: { maximum: 50 }
 end
