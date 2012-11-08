@@ -4,6 +4,10 @@
 
 @import "bootstrap";
 
+html, body {
+	height: 100%;
+}
+
 .navbar-inner .container {
 	width: 960px;
 }
@@ -30,6 +34,15 @@
 	margin-bottom: 30px;
 }
 
+.vertical-margin-less {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}
+
 .top-margin {
 	margin-top: 15px;
 }
@@ -52,4 +65,15 @@
 	margin-right: 15px;
 }
 
+.wrap {
+	min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -57px;
+}
 
+#footer {
+	clear: both;
+	position: relative;
+	height: 57px;
+}
