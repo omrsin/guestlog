@@ -2,6 +2,7 @@ set_default(:postgresql_host, "localhost")
 set_default(:postgresql_user) { application }
 set_default(:postgresql_password) { Capistrano::CLI.password_prompt "PostgreSQL Password: " }
 set_default(:postgresql_database) { "#{application}_production" }
+set_default(:app_password) { Capistrano::CLI.password_prompt "App Admin Password: " }
 
 namespace :postgresql do
   desc "Install the latest stable release of PostgreSQL."
@@ -39,4 +40,10 @@ namespace :postgresql do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   after "deploy:finalize_update", "postgresql:symlink"
+
+  desc "Create the app's admin user"
+  task :create_admin_user, roles: :db, only: {primary: true} do
+    run %Q{#{sudo} -u postgres psql #{postgresql_database} -c "insert into users (username, password, created_at, updated_at, is_active, is_admin, remember_token) values ('admin', '#{app_password}', now(), now(), true, true, '123456');commit;"}
+  end
+  after "deploy:cold", "postgresql:create_admin_user"
 end

@@ -9,6 +9,7 @@ load "config/recipes/rbenv"
 load "config/recipes/check"
 load "config/recipes/files"
 
+# server "10.0.0.164", :web, :app, :db, primary: true
 server "198.74.50.103", :web, :app, :db, primary: true
 
 set :user, 				"deployer"
